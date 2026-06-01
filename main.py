@@ -1,3 +1,5 @@
+import sys
+
 def process_operation(operation):
     match operation[1]:
         case "+":
@@ -17,13 +19,19 @@ def process_operation(operation):
 def unmix(mixed_symbols):
     numbers = []
     operations = []
+    number = ""
     for symbol in mixed_symbols:
-        if "+*/-".contains(symbol): operations.append(symbol) 
-        if "0123456789".contains(symbol): numbers.append(symbol) 
+        if "+*/-".find(symbol) > -1:
+            operations.append(symbol)
+            numbers.append(int(number))
+            number = ""
+        if "0123456789".find(symbol) > -1: number += symbol
+        print(symbol)
+    numbers.append(int(number))
     return [numbers, operations]
 
 def main():
-    print("hello")
+    print(unmix(sys.argv[1]))
 
 if __name__=="__main__":
     main()
