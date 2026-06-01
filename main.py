@@ -9,6 +9,9 @@ def process_operation(num1, operation, num2):
             return num1 * num2
 
         case "/":
+            if num2 == 0:
+                print("Error: division by 0")
+                exit()
             return num1 / num2
 
         case "-":
